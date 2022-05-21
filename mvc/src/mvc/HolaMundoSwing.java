@@ -66,7 +66,7 @@ public class HolaMundoSwing extends JFrame implements ActionListener {
 		panelPrincipal.add(chckbxBotones, BorderLayout.WEST);
 		chckbxBotones.addActionListener(this);
 
-		cmbBox = new JComboBox<>();
+		cmbBox = new JComboBox<String>();
 		panelPrincipal.add(cmbBox, BorderLayout.EAST);
 
 		String[] opciones = new String[] { "opción1", "opción2", "opción3" };
@@ -74,14 +74,7 @@ public class HolaMundoSwing extends JFrame implements ActionListener {
 			cmbBox.addItem(opcion);
 		}
 		cmbBox.setSelectedIndex(1);
-		cmbBox.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				System.out.println("Nueva opción seleccionada: " +
-						cmbBox.getSelectedItem());
-			}
-		});
+		cmbBox.addActionListener(this);
 
 	}
 
@@ -97,6 +90,9 @@ public class HolaMundoSwing extends JFrame implements ActionListener {
 			break;
 		case "Activar botones":
 			gestionarActivacionBotones();
+			break;
+		case "ComboBoxChanged":
+			System.out.println("Se ha seleccionado: "+ cmbBox.getActionCommand());
 		
 		}
 	}
